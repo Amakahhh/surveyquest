@@ -6,7 +6,6 @@ import step1 from '@/public/step1.svg';
 import logoOnly from '@/public/onlylogo.svg';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 const RegistrationForm = () => {
   const [firstName, setFirstName] = useState('');
