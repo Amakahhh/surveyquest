@@ -8,84 +8,12 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import ellipse from '@/public/logoAndButtonLabel.svg'
-import { div } from 'framer-motion/client';
 
 
 const RegistrationForm = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [telegramNumber, setTelegramNumber] = useState('');
-  const [gender, setGender] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [passwordError, setPasswordError] = useState('');
   const [passwordValidationErrors, setPasswordValidationErrors] = useState<string[]>([]);
-  const [confirmPasswordError, setConfirmPasswordError] = useState('');
-  const [passwordTouched, setPasswordTouched] = useState(false);
-  const router = useRouter();
 
-  const validatePassword = (password: string) => {
-    const errors: string[] = [];
-    if (password.length < 8) {
-      errors.push('Password must be at least 8 characters');
-    }
-    if (!/[A-Z]/.test(password)) {
-      errors.push('Password must contain at least one uppercase letter');
-    }
-    if (!/[a-z]/.test(password)) {
-      errors.push('Password must contain at least one lowercase letter');
-    }
-    if (!/[0-9]/.test(password)) {
-      errors.push('Password must contain at least one number');
-    }
-    if (!/[^a-zA-Z0-9\s]/.test(password)) {
-      errors.push('Password must contain at least one special character');
-    }
-    return errors;
-  };
-
-  const isFormValid = () => {
-    return (
-      firstName !== '' &&
-      lastName !== '' &&
-      email !== '' &&
-      telegramNumber !== '' &&
-      gender !== '' &&
-      password !== '' &&
-      confirmPassword !== '' &&
-      password === confirmPassword &&
-      passwordValidationErrors.length === 0
-    );
-  };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const errors = validatePassword(password);
-    setPasswordValidationErrors(errors);
-
-    if (errors.length === 0) {
-      setPasswordError('');
-      // Handle form submission logic here
-      alert('Form submitted!');
-    } else {
-      setPasswordError('Please fix the password errors.');
-    }
-  };
-
-  useEffect(() => {
-    if (passwordTouched) {
-      setPasswordValidationErrors(validatePassword(password));
-    }
-  }, [password, passwordTouched]);
-
-  useEffect(() => {
-    if (confirmPassword && password !== confirmPassword) {
-      setConfirmPasswordError('Passwords do not match');
-    } else {
-      setConfirmPasswordError('');
-    }
-  }, [password, confirmPassword]);
+  
 
   return (
     

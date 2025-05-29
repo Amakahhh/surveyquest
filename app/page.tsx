@@ -1,6 +1,5 @@
 import React from 'react'
 import First from './first'
-import Page2 from './second/page'
 
 const page = () => {
   return (
