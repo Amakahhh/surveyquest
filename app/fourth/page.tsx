@@ -4,7 +4,6 @@ import wood from '@/public/woodenbg.svg';
 import logoAndText from '@/public/surveyquestlogoandtext.svg';
 import step4 from '@/public/step4.svg';
 import logoOnly from '@/public/onlylogo.svg';
-import { useState } from 'react';
 import Link from 'next/link';
 import ellipse from '@/public/logoAndButtonLabel.svg'
 
