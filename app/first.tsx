@@ -57,15 +57,9 @@ const RegistrationForm = () => {
     event.preventDefault();
     const errors = validatePassword(password);
     setPasswordValidationErrors(errors);
-
-    if (errors.length === 0) {
-      setPasswordError('');
-      // Handle form submission logic here
-      alert('Form submitted!');
-    } else {
-      setPasswordError('Please fix the password errors.');
-    }
   };
+
+   
 
   useEffect(() => {
     if (passwordTouched) {
