@@ -1,61 +1,78 @@
-'use client'
-import Image from 'next/image';
-import wood from '@/public/woodenbg.svg';
-import logoAndText from '@/public/surveyquestlogoandtext.svg';
-import step3 from '@/public/step3.svg';
-import logoOnly from '@/public/onlylogo.svg';
-import { useState } from 'react';
-import Link from 'next/link';
+"use client";
+import Image from "next/image";
+import wood from "@/public/woodenbg.svg";
+import logoAndText from "@/public/surveyquestlogoandtext.svg";
+import step3 from "@/public/step3.svg";
+import logoOnly from "@/public/onlylogo.svg";
+import { useState } from "react";
+import Link from "next/link";
 
-const third = () => {
-  const [institution, setInstitution] = useState('Covenant University');
-  const [role, setRole] = useState('Student');
-  const [college, setCollege] = useState('');
-  const [level, setLevel] = useState('');
-  const [department, setDepartment] = useState('');
-  const [course, setCourse] = useState('');
-  const [departmentError, setDepartmentError] = useState('');
+function Third() {
+  const [institution, setInstitution] = useState("Covenant University");
+  const [role, setRole] = useState("Student");
+  const [college, setCollege] = useState("");
+  const [level, setLevel] = useState("");
+  const [department, setDepartment] = useState("");
+  const [course, setCourse] = useState("");
+  const [departmentError, setDepartmentError] = useState("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!department) {
-      setDepartmentError('This field must be filled');
+      setDepartmentError("This field must be filled");
       return;
     }
-    alert('Submitted');
+    alert("Submitted");
   };
   const isFormValid = () => {
     return (
-      institution !== '' &&
-      role !== '' &&
-      college !== '' &&
-      level !== '' &&
-      department !== ''
+      institution !== "" &&
+      role !== "" &&
+      college !== "" &&
+      level !== "" &&
+      department !== ""
     );
   };
 
   return (
     <div className="flex flex-col md:flex-row w-full h-screen">
       <p className="text-[#2E2F3266] absolute top-4 left-4 md:left-2/3 md:-translate-x-1/2">
-        Telegram User ID: 1234567890 
+        Telegram User ID: 1234567890
       </p>
 
       <div className="w-1/2 hidden md:flex  relative ">
-      
-        <Image src={wood} alt="Wood background" fill className="object-cover" priority />
+        <Image
+          src={wood}
+          alt="Wood background"
+          fill
+          className="object-cover"
+          priority
+        />
         <div className="absolute inset-0 flex items-center justify-center">
-          <Image src={logoAndText} alt="Logo with text" className="w-80 h-auto" priority />
+          <Image
+            src={logoAndText}
+            alt="Logo with text"
+            className="w-80 h-auto"
+            priority
+          />
         </div>
       </div>
 
       <div className="md:hidden w-full flex justify-center mt-4">
-        <Image src={logoOnly} alt="Logo only" className="w-40 h-auto" priority />
+        <Image
+          src={logoOnly}
+          alt="Logo only"
+          className="w-40 h-auto"
+          priority
+        />
       </div>
 
       <div className="flex-1 bg-[#FCFAF2] flex items-center justify-center p-4">
         <div className="w-full max-w-md">
           <Image src={step3} alt="Step 2" className="w-full h-20 mb-4" />
-          <h1 className="text-2xl font-extrabold mb-6 text-[#B3935E]">Almost there...</h1>
+          <h1 className="text-2xl font-extrabold mb-6 text-[#B3935E]">
+            Almost there...
+          </h1>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label className="text-black">Name of institution:</label>
@@ -65,7 +82,9 @@ const third = () => {
                 className="border border-[#0c0b09] text-black rounded w-full py-2 px-3"
                 required
               >
-                <option value="Afe Babalola University">Afe Babalola University</option>
+                <option value="Afe Babalola University">
+                  Afe Babalola University
+                </option>
                 <option value="Babcock University">Babcock University</option>
                 <option value="Bells University">Bells University</option>
                 <option value="Bowen University">Bowen University</option>
@@ -124,16 +143,24 @@ const third = () => {
                 value={department}
                 onChange={(e) => {
                   setDepartment(e.target.value);
-                  setDepartmentError('');
+                  setDepartmentError("");
                 }}
-                className={`border rounded w-full py-2 px-3 ${departmentError ? 'border-red-500' : 'border-[#0c0b09]'} text-black`}
+                className={`border rounded w-full py-2 px-3 ${
+                  departmentError ? "border-red-500" : "border-[#0c0b09]"
+                } text-black`}
                 required
               >
                 <option value="">Select Department</option>
                 <option value="Computer Science">Computer Science</option>
-                <option value="Electrical Engineering">Electrical Engineering</option>
+                <option value="Electrical Engineering">
+                  Electrical Engineering
+                </option>
               </select>
-              {departmentError && <p className="text-red-500 text-sm mt-1">{departmentError}</p>}
+              {departmentError && (
+                <p className="text-red-500 text-sm mt-1">
+                  {departmentError}
+                </p>
+              )}
             </div>
             <div className="mb-6">
               <label className="text-black">Course:</label>
@@ -145,17 +172,21 @@ const third = () => {
               />
             </div>
             <Link href="/fourth">
-            <button
-              type="submit"
-className={`bg-[#B3935E] text-white py-2 px-4 rounded w-full ${!isFormValid() ? 'opacity-50 cursor-not-allowed' : ''}`}
-              disabled={!isFormValid()}            >
-              Next
-            </button></Link>
+              <button
+                type="submit"
+                className={`bg-[#B3935E] text-white py-2 px-4 rounded w-full ${
+                  !isFormValid() ? "opacity-50 cursor-not-allowed" : ""
+                }`}
+                disabled={!isFormValid()}
+              >
+                Next
+              </button>
+            </Link>
           </form>
         </div>
       </div>
     </div>
   );
-};
+}
 
-export default third;
+export default Third;

@@ -7,7 +7,6 @@ import logoOnly from '@/public/onlylogo.svg';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import Second from './second/page';
 
 const RegistrationForm = () => {
   const [firstName, setFirstName] = useState('');
